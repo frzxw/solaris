@@ -51,7 +51,3 @@ g++ [main.cpp](http://_vscodecontentref_/0) [solarsystem.cpp](http://_vscodecont
 ### Nikmati Perjalanan Anda!
 
 Jelajahi keajaiban tata surya dengan Proyek Solaris. Navigasi melalui ruang angkasa, amati gerakan planet, dan nikmati keindahan kosmos. Selamat menjelajah!
-
-━━━━━━━━━━━━━━━━━━━━━━━
-⭐ Selamat Menjelajah! ⭐
-━━━━━━━━━━━━━━━━━━━━━━━
