@@ -17,7 +17,7 @@ Selamat datang di Proyek Solaris! Proyek ini mensimulasikan tata surya dengan pl
 Untuk mengompilasi proyek, gunakan perintah berikut:
 
 ```sh
-g++ [main.cpp](http://_vscodecontentref_/0) [solarsystem.cpp](http://_vscodecontentref_/1) [planet.cpp](http://_vscodecontentref_/2) [moon.cpp](http://_vscodecontentref_/3) [tga.cpp](http://_vscodecontentref_/4) [camera.cpp](http://_vscodecontentref_/5) -o [solaris.exe](http://_vscodecontentref_/6) -lopengl32 -lglu32 -lfreeglut -lwinmm
+g++ main.cpp solarsystem.cpp planet.cpp moon.cpp tga.cpp camera.cpp -o solaris.exe -lopengl32 -lglu32 -lfreeglut -lwinmm
 ```
 
 ### Kontrol
