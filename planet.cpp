@@ -30,6 +30,12 @@ void Planet::calculatePosition(float time)
 
 	// menemukan rotasi planet di sekitar porosnya
 	rotation = time * 360 / rotationTime;
+
+	// menghitung posisi bulan
+	for (int i = 0; i < moons.size(); i++)
+	{
+		moons[i].calculatePosition(time);
+	}
 }
 
 // Merender ke layar
@@ -88,6 +94,11 @@ void Planet::renderOrbit(void)
 	glPushMatrix();
 	// menerjemahkan ke pusat planet ini untuk menggambar orbit bulan di sekitarnya
 	glTranslatef(position[0] * distanceScale, position[1] * distanceScale, position[2] * distanceScale);
+	// menggambar orbit bulan
+	for (int i = 0; i < moons.size(); i++)
+	{
+		moons[i].renderOrbit();
+	}
 	glPopMatrix();
 }
 

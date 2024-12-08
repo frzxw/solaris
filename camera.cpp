@@ -15,78 +15,78 @@
 // mengatur vec ke (x, y, z)
 void vectorSet(float *vec, float x, float y, float z)
 {
-	vec[0] = x;
-	vec[1] = y;
-	vec[2] = z;
+    vec[0] = x;
+    vec[1] = y;
+    vec[2] = z;
 }
 
 // menambahkan v2 ke v1
 void vectorAdd(float *v1, float *v2)
 {
-	v1[0] += v2[0];
-	v1[1] += v2[1];
-	v1[2] += v2[2];
+    v1[0] += v2[0];
+    v1[1] += v2[1];
+    v1[2] += v2[2];
 }
 
 // menyalin v2 ke v1
 void vectorCopy(float *v1, float *v2)
 {
-	v1[0] = v2[0];
-	v1[1] = v2[1];
-	v1[2] = v2[2];
+    v1[0] = v2[0];
+    v1[1] = v2[1];
+    v1[2] = v2[2];
 }
 
 // mengalikan vec dengan skalar
 void vectorMul(float *vec, float scalar)
 {
-	vec[0] *= scalar;
-	vec[1] *= scalar;
-	vec[2] *= scalar;
+    vec[0] *= scalar;
+    vec[1] *= scalar;
+    vec[2] *= scalar;
 }
 
 // menemukan panjang vektor menggunakan pythagoras
 float lengthOfVec(float *vec)
 {
-	return sqrtf(vec[0] * vec[0] + vec[1] * vec[1] + vec[2] * vec[2]);
+    return sqrtf(vec[0] * vec[0] + vec[1] * vec[1] + vec[2] * vec[2]);
 }
 
 // menormalisasi vektor agar panjangnya menjadi 1
 void normaliseVec(float *vec)
 {
-	vectorMul(vec, 1 / lengthOfVec(vec));
+    vectorMul(vec, 1 / lengthOfVec(vec));
 }
 
 // membuat matriks rotasi 3x3 dari sudut dan sumbu yang diberikan serta pointer ke matriks 3x3
 void rotationMatrix(float *matrix, float *axis, float angle)
 {
-	// menggunakan http://en.wikipedia.org/wiki/Rotation_matrix#Rotation_matrix_from_axis_and_angle
-	float cos1 = cos(angle);
-	float cos2 = 1 - cos1;
-	float sin1 = sin(angle);
+    // menggunakan http://en.wikipedia.org/wiki/Rotation_matrix#Rotation_matrix_from_axis_and_angle
+    float cos1 = cos(angle);
+    float cos2 = 1 - cos1;
+    float sin1 = sin(angle);
 
-	matrix[0] = cos1 + axis[0] * axis[0] * cos2;
-	matrix[1] = axis[0] * axis[1] * cos2 - axis[2] * sin1;
-	matrix[2] = axis[0] * axis[2] * cos2 + axis[1] * sin1;
+    matrix[0] = cos1 + axis[0] * axis[0] * cos2;
+    matrix[1] = axis[0] * axis[1] * cos2 - axis[2] * sin1;
+    matrix[2] = axis[0] * axis[2] * cos2 + axis[1] * sin1;
 
-	matrix[3] = axis[1] * axis[0] * cos2 + axis[2] * sin1;
-	matrix[4] = cos1 + axis[1] * axis[1] * cos2;
-	matrix[5] = axis[1] * axis[2] * cos2 - axis[0] * sin1;
+    matrix[3] = axis[1] * axis[0] * cos2 + axis[2] * sin1;
+    matrix[4] = cos1 + axis[1] * axis[1] * cos2;
+    matrix[5] = axis[1] * axis[2] * cos2 - axis[0] * sin1;
 
-	matrix[6] = axis[2] * axis[0] * cos2 - axis[1] * sin1;
-	matrix[7] = axis[2] * axis[1] * cos2 + axis[0] * sin1;
-	matrix[8] = cos1 + axis[2] * axis[2] * cos2;
+    matrix[6] = axis[2] * axis[0] * cos2 - axis[1] * sin1;
+    matrix[7] = axis[2] * axis[1] * cos2 + axis[0] * sin1;
+    matrix[8] = cos1 + axis[2] * axis[2] * cos2;
 }
 
 // mengalikan vektor v1 dengan matriks dan menyimpan hasilnya ke vektor v2
 void mulVecBy(float *v1, float *matrix, float *v2)
 {
-	v2[0] = v1[0] * matrix[0] + v1[1] * matrix[1] + v1[2] * matrix[2];
-	v2[1] = v1[0] * matrix[3] + v1[1] * matrix[4] + v1[2] * matrix[5];
-	v2[2] = v1[0] * matrix[6] + v1[1] * matrix[7] + v1[2] * matrix[8];
+    v2[0] = v1[0] * matrix[0] + v1[1] * matrix[1] + v1[2] * matrix[2];
+    v2[1] = v1[0] * matrix[3] + v1[1] * matrix[4] + v1[2] * matrix[5];
+    v2[2] = v1[0] * matrix[6] + v1[1] * matrix[7] + v1[2] * matrix[8];
 }
 
 // memutar vektor v1 di sekitar sumbu v2 dengan sudut tertentu dan menyimpan hasilnya ke v3
-void rotateAroundVec(float* v1, float* v2, float angle, float* v3)
+void rotateAroundVec(float *v1, float *v2, float angle, float *v3)
 {
     // membuat matriks rotasi
     float matrix[16];
@@ -126,7 +126,7 @@ void Camera::transformTranslation(void)
 }
 
 // mengarahkan kamera ke titik tertentu di ruang 3D
-void Camera::pointAt(float* targetVec)
+void Camera::pointAt(float *targetVec)
 {
     float tempVec[3];
     float up[3] = {0.0f, 0.0f, 1.0f};

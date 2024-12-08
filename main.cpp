@@ -1,6 +1,8 @@
 #include <cmath>
 #include <cstdlib>
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 #include <gl\gl.h>
 #include <gl\glut.h>
 #include <gl\glu.h>
@@ -280,10 +282,10 @@ void keyDown(unsigned char key, int x, int y)
 	case 'd':
 		controls.right = true;
 		break;
-	case 'l':
+	case 'e':
 		controls.rollRight = true;
 		break;
-	case 'j':
+	case 'q':
 		controls.rollLeft = true;
 		break;
 	case 'i':
@@ -292,10 +294,10 @@ void keyDown(unsigned char key, int x, int y)
 	case 'k':
 		controls.pitchUp = true;
 		break;
-	case 'q':
+	case 'j':
 		controls.yawLeft = true;
 		break;
-	case 'e':
+	case 'l':
 		controls.yawRight = true;
 		break;
 	}
@@ -317,10 +319,10 @@ void keyUp(unsigned char key, int x, int y)
 	case 'd':
 		controls.right = false;
 		break;
-	case 'l':
+	case 'e':
 		controls.rollRight = false;
 		break;
-	case 'j':
+	case 'q':
 		controls.rollLeft = false;
 		break;
 	case 'i':
@@ -329,10 +331,10 @@ void keyUp(unsigned char key, int x, int y)
 	case 'k':
 		controls.pitchUp = false;
 		break;
-	case 'q':
+	case 'j':
 		controls.yawLeft = false;
 		break;
-	case 'e':
+	case 'l':
 		controls.yawRight = false;
 		break;
 	}
@@ -351,7 +353,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(1200, 700);
 	glutInitWindowPosition(100, 100);
-	glutCreateWindow(argv[0]);
+	glutCreateWindow("Solaris");
 	init();
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
