@@ -19,7 +19,7 @@ public:
 	void addPlanet(float distanceFromSun, float orbitTime, float rotationTime, float radius, GLuint textureHandle);
 
 	// Tambahkan bulan ke planet dengan indeks yang diberikan
-	
+	void addMoon(int planetIndex, float distanceFromPlanet, float orbitTime, float rotationTime, float radius, GLuint textureHandle);
 
 	// render planet dengan opengl
 	void render();

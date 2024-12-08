@@ -2,7 +2,6 @@
 
 SolarSystem::SolarSystem()
 {
-	
 }
 
 // menghitung posisi dan logika semua planet
@@ -18,6 +17,11 @@ void SolarSystem::calculatePositions(float time)
 void SolarSystem::addPlanet(float distanceFromSun, float orbitTime, float rotationTime, float radius, GLuint textureHandle)
 {
 	planets.push_back(Planet(distanceFromSun, orbitTime, rotationTime, radius, textureHandle));
+}
+
+void SolarSystem::addMoon(int planetIndex, float distanceFromPlanet, float orbitTime, float rotationTime, float radius, GLuint textureHandle)
+{
+	planets[planetIndex].addMoon(distanceFromPlanet, orbitTime, rotationTime, radius, textureHandle);
 }
 
 // merender planet dengan opengl
@@ -39,7 +43,7 @@ void SolarSystem::renderOrbits()
 }
 
 // mendapatkan posisi dalam satuan ruang 3d dari planet yang diberikan (ditentukan oleh indeksnya dalam daftar) dan menempatkannya ke dalam vektor 3d vec
-void SolarSystem::getPlanetPosition(int index, float* vec)
+void SolarSystem::getPlanetPosition(int index, float *vec)
 {
 	planets[index].getPosition(vec);
 }

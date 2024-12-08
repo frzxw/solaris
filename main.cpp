@@ -13,8 +13,8 @@
 // ukuran layar
 int screenWidth, screenHeight;
 
-// Tekstur TGA yang berisi dialog bantuan dan starfield
-TGA *help, *stars;
+// Tekstur TGA yang berisi dialog bantuan, bintang, dan bulan
+TGA *help, *stars, *moon;
 // toggle jika dialog bantuan diaktifkan
 bool helpDialogue = true;
 // toggle jika orbit ditampilkan
@@ -50,6 +50,15 @@ void timer(int)
 float random(float max)
 {
 	return (float)(std::rand() % 1000) * max * 0.001;
+}
+
+void addMoon()
+{
+	// menambahkan bulan ke planet yang dipilih dengan jarak acak dari planet dan ukuran acak
+	solarSystem.addMoon(planetSelected,
+						(500 + random(1500)) * solarSystem.getRadiusOfPlanet(planetSelected),
+						10 + random(100), 0.5 + random(20),
+						solarSystem.getRadiusOfPlanet(planetSelected) * (0.05f + random(0.2f)), moon->getTextureHandle());
 }
 
 void backsound()

@@ -1,6 +1,12 @@
+#ifndef PLANET_H
+#define PLANET_H
+
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 #include <gl\GL.h>
 #include <vector>
+#include "moon.h"
 
 class Planet
 {
@@ -25,6 +31,9 @@ private:
 	// rotasinya di sekitar porosnya
 	float rotation;
 
+	// daftar bulan yang dimiliki planet ini
+	std::vector<Moon> moons;
+
 public:
 	// Jarak dalam satuan km (kilometer) dan waktu dalam satuan hari bumi (365,25 waktu orbit untuk bumi)
 	Planet(float distanceFromSun, float orbitTime, float rotationTime, float radius, GLuint textureHandle);
@@ -39,8 +48,13 @@ public:
 	void renderOrbit(void);
 
 	// Dapatkan posisinya dalam satuan ruang dunia 3d (setelah penskalaan) dan masukkan ke dalam vektor 3d
-	void getPosition(float* vec);
+	void getPosition(float *vec);
 
 	// dapatkan radius planet ini
 	float getRadius(void);
+
+	// tambahkan bulan ke planet ini
+	void addMoon(float distanceFromPlanet, float orbitTime, float rotationTime, float radius, GLuint textureHandle);
 };
+
+#endif

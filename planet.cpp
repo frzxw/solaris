@@ -22,7 +22,7 @@ void Planet::calculatePosition(float time)
 {
 	// menemukan sudut orientasi orbit di sekitar matahari
 	float angle = time * 3.1419f / orbitTime;
-	
+
 	// menggunakan trigonometri untuk menemukan posisi di ruang
 	position[0] = sin(angle) * distanceFromSun;
 	position[1] = cos(angle) * distanceFromSun;
@@ -42,19 +42,20 @@ void Planet::render(void)
 
 	// memutar untuk putaran planet
 	glRotatef(rotation, 0.0f, 0.0f, 1.0f);
-	
+
 	// mengikat tekstur planet
 	glBindTexture(GL_TEXTURE_2D, textureHandle);
-	
+
 	// merender sebagai objek quadric bola GLU
-	GLUquadricObj* quadric = gluNewQuadric();
+	GLUquadricObj *quadric = gluNewQuadric();
 	gluQuadricTexture(quadric, true);
 	gluQuadricNormals(quadric, GLU_SMOOTH);
 
 	if (distanceFromSun < 0.001f) // jika ini adalah matahari, jangan merender terlalu besar, dan nonaktifkan pencahayaan
 	{
 		float radiusScaled = radius * planetSizeScale;
-		if (radiusScaled > 0.5f) radiusScaled = 0.5f;
+		if (radiusScaled > 0.5f)
+			radiusScaled = 0.5f;
 
 		glDisable(GL_LIGHTING);
 		gluSphere(quadric, radiusScaled, 30, 30);
@@ -80,7 +81,7 @@ void Planet::renderOrbit(void)
 		glVertex3f(sin(angle) * distanceFromSun * distanceScale, cos(angle) * distanceFromSun * distanceScale, 0.0f);
 	}
 	glVertex3f(0.0f, distanceFromSun * distanceScale, 0.0f);
-	
+
 	glEnd();
 
 	// merender orbit bulan
@@ -91,7 +92,7 @@ void Planet::renderOrbit(void)
 }
 
 // Mendapatkan posisinya dalam satuan ruang 3D dunia (setelah penskalaan) dan menempatkannya ke dalam vektor 3D
-void Planet::getPosition(float* vec)
+void Planet::getPosition(float *vec)
 {
 	vec[0] = position[0] * distanceScale;
 	vec[1] = position[1] * distanceScale;
@@ -102,4 +103,9 @@ void Planet::getPosition(float* vec)
 float Planet::getRadius(void)
 {
 	return radius;
+}
+
+void Planet::addMoon(float distanceFromPlanet, float orbitTime, float rotationTime, float radius, GLuint textureHandle)
+{
+	moons.push_back(Moon(distanceFromPlanet, orbitTime, rotationTime, radius, textureHandle));
 }
