@@ -70,38 +70,39 @@ void backsound()
 
 void init(void)
 {
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glShadeModel(GL_SMOOTH);
-	glEnable(GL_TEXTURE_2D);
+	glClearColor(0.0, 0.0, 0.0, 0.0); // warna background hitam
+	glShadeModel(GL_SMOOTH);		  // shading model
+	glEnable(GL_TEXTURE_2D);		  // mengaktifkan tekstur
 
 	// mengatur pencahayaan
-	glEnable(GL_LIGHTING);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	GLfloat matSpecular[] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat matAmbience[] = {0.3, 0.3, 0.3, 1.0};
-	GLfloat matShininess[] = {20.0};
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glShadeModel(GL_SMOOTH);
-	backsound();
+	glEnable(GL_LIGHTING);						  // mengaktifkan pencahayaan
+	glMatrixMode(GL_MODELVIEW);					  // mengatur matriks modelview
+	glLoadIdentity();							  // mengatur matriks identitas
+	GLfloat matSpecular[] = {1.0, 1.0, 1.0, 1.0}; // warna specular
+	GLfloat matAmbience[] = {0.3, 0.3, 0.3, 1.0}; // warna ambience
+	GLfloat matShininess[] = {20.0};			  // shininess
+	glClearColor(0.0, 0.0, 0.0, 0.0);			  // warna background hitam
+	glShadeModel(GL_SMOOTH);					  // shading model
+	backsound();								  // memainkan musik latar belakang
 
-	glMaterialfv(GL_FRONT, GL_SPECULAR, matSpecular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, matShininess);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, matAmbience);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, matSpecular);	// mengatur warna specular
+	glMaterialfv(GL_FRONT, GL_SHININESS, matShininess); // mengatur shininess
+	glMaterialfv(GL_FRONT, GL_AMBIENT, matAmbience);	// mengatur warna ambience
 
-	GLfloat lightAmbient[] = {0.3, 0.3, 0.3, 1.0};
-	GLfloat lightDiffuse[] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat lightSpecular[] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat lightAmbient[] = {0.3, 0.3, 0.3, 1.0};	// warna ambient
+	GLfloat lightDiffuse[] = {1.0, 1.0, 1.0, 1.0};	// warna diffuse
+	GLfloat lightSpecular[] = {1.0, 1.0, 1.0, 1.0}; // warna specular
 
-	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);	  // mengatur warna ambient
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);	  // mengatur warna diffuse
+	glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular); // mengatur warna specular
 
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glDisable(GL_LIGHTING);
+	glEnable(GL_LIGHTING);	// mengaktifkan pencahayaan
+	glEnable(GL_LIGHT0);	// mengaktifkan lampu 0
+	glDisable(GL_LIGHTING); // menonaktifkan pencahayaan
 
 	// Memuat semua data gambar
+	help = new TGA("images/help.tga");
 	stars = new TGA("images/stars2.tga");
 	moon = new TGA("images/moon.tga");
 

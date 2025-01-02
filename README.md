@@ -36,7 +36,7 @@ g++ main.cpp solarsystem.cpp planet.cpp moon.cpp tga.cpp camera.cpp -o solaris.e
 2. **Venus**
 3. **Bumi**
 4. **Mars**
-5. **Yupiter**
+5. **Jupiter**
 6. **Saturnus**
 7. **Uranus**
 8. **Neptunus**

@@ -53,3 +53,5 @@ float SolarSystem::getRadiusOfPlanet(int index)
 {
 	return planets[index].getRadius();
 }
+
+// void SolarSystem::showHelp

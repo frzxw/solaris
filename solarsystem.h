@@ -32,4 +32,6 @@ public:
 
 	// dapatkan radius planet pada indeks yang diberikan dalam daftar planet
 	float getRadiusOfPlanet(int index);
+
+	void showHelp();
 };
