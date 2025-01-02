@@ -4,7 +4,7 @@
 
 #include "planet.h"
 
-class SolarSystem
+class SolarSystem	
 {
 private:
 	std::vector<Planet> planets;

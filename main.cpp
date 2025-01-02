@@ -66,6 +66,15 @@ void addMoon()
 void backsound()
 {
 	PlaySound(TEXT("sounds/background.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	// Mengurangi volume backsound
+	waveOutSetVolume(0, 0x50005000); // Volume 50%
+}
+
+void info()
+{
+	PlaySound(TEXT("sounds/info.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	// Menambahkan volume info
+	waveOutSetVolume(0, 0xFFFF0000); // Volume 100%
 }
 
 void init(void)
@@ -84,6 +93,7 @@ void init(void)
 	glClearColor(0.0, 0.0, 0.0, 0.0);			  // warna background hitam
 	glShadeModel(GL_SMOOTH);					  // shading model
 	backsound();								  // memainkan musik latar belakang
+	info();										  // memainkan informasi
 
 	glMaterialfv(GL_FRONT, GL_SPECULAR, matSpecular);	// mengatur warna specular
 	glMaterialfv(GL_FRONT, GL_SHININESS, matShininess); // mengatur shininess
@@ -350,16 +360,26 @@ void reshape(int w, int h)
 
 int main(int argc, char **argv)
 {
+	// inisialisasi GLUT
 	glutInit(&argc, argv);
+	// inisialisasi layar
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	// membuat window
 	glutInitWindowSize(1200, 700);
+	// mengatur posisi window
 	glutInitWindowPosition(100, 100);
+	// memberi nama window
 	glutCreateWindow("Solaris");
+	// inisialisasi
 	init();
+	// menampilkan window
 	glutDisplayFunc(display);
+	// menampilkan reshape
 	glutReshapeFunc(reshape);
+	// mengatur keyboard
 	glutKeyboardFunc(keyDown);
 	glutKeyboardUpFunc(keyUp);
+	// menjalankan loop
 	glutMainLoop();
 	return 0;
 }

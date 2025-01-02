@@ -72,6 +72,11 @@ void Planet::render(void)
 		gluSphere(quadric, radius * planetSizeScale, 30, 30);
 	}
 
+	for (int i = 0; i < moons.size(); i++)
+	{
+		moons[i].render();
+	}
+
 	glPopMatrix();
 }
 
