@@ -31,14 +31,14 @@ adjustable speed, switch between readable and realistic scale, and add moons on 
 
 ## Build
 
-Windows with MinGW and freeglut (the DLL is included):
+Windows with MinGW and freeglut (put `freeglut.dll` next to the executable):
 
 ```sh
 g++ main.cpp solarsystem.cpp planet.cpp moon.cpp tga.cpp camera.cpp -o solaris.exe -lopengl32 -lglu32 -lfreeglut -lwinmm
 ./solaris.exe
 ```
 
-A prebuilt Windows binary with its assets is in `solaris.zip`.
+A prebuilt Windows build with its DLL, textures and sounds is on the [releases page](https://github.com/frzxw/solaris/releases/latest).
 
 ## Code
 

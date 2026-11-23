@@ -1,1 +1,5 @@
 solaris.exe
+*.exe
+*.o
+*.zip
+.vscode/
