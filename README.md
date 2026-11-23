@@ -1,53 +1,51 @@
-# Dokumentasi Proyek
+# Solaris
 
-Selamat datang di Proyek Solaris! Proyek ini mensimulasikan tata surya dengan planet dan bulan, memungkinkan Anda untuk menavigasi dan berinteraksi dengan benda-benda langit. Proyek ini dibangun menggunakan OpenGL dan GLUT untuk rendering dan interaksi.
+An interactive solar system in C++ and OpenGL. Fly a free camera between the eight planets, watch them orbit at
+adjustable speed, switch between readable and realistic scale, and add moons on the fly.
 
-## Struktur File
+## Features
 
-- `main.cpp`: Titik masuk utama aplikasi. Menangani inisialisasi, rendering, dan input pengguna.
-- `solarsystem.cpp`: Mengelola tata surya, termasuk planet dan posisinya.
-- `planet.cpp`: Mendefinisikan kelas `Planet` dan logika renderingnya.
-- `moon.cpp`: Mendefinisikan kelas `Moon` dan logika renderingnya.
-- `tga.cpp`: Menangani pemuatan file gambar TGA untuk tekstur.
-- `camera.cpp`: Mengelola sistem kamera untuk navigasi dan tampilan.
-- `camera.h`, `planet.h`, `moon.h`, `solarsystem.h`: File header untuk kelas masing-masing.
+- Planets and moons on orbits derived from real astronomical data, textured from TGA images
+- A spacecraft-style camera with six degrees of freedom
+- Time and movement speed controls
+- Readable or realistic planet scale
+- Orbit paths on demand
+- Background music and sound cues (Windows)
+- An in-app help overlay
 
-## Kompilasi
+## Controls
 
-Untuk mengompilasi proyek, gunakan perintah berikut:
+| Key | Action |
+| --- | --- |
+| `W` `A` `S` `D` | Move forward, left, back, right |
+| `I` `K` | Pitch up and down |
+| `J` `L` | Roll left and right |
+| `Q` `E` | Yaw left and right |
+| `,` `.` | Slower or faster movement |
+| `-` `=` | Slower or faster time |
+| `1`–`9` | Focus a planet |
+| `[` `]` | Shrink or grow the planets; `R` resets to realistic scale |
+| `O` | Toggle orbit paths |
+| `M` | Add a moon to the focused planet |
+| `H` | Help |
+
+## Build
+
+Windows with MinGW and freeglut (the DLL is included):
 
 ```sh
 g++ main.cpp solarsystem.cpp planet.cpp moon.cpp tga.cpp camera.cpp -o solaris.exe -lopengl32 -lglu32 -lfreeglut -lwinmm
+./solaris.exe
 ```
 
-### Kontrol
+A prebuilt Windows binary with its assets is in `solaris.zip`.
 
-- **Gerakan**: Gunakan `W`, `A`, `S`, `D` untuk bergerak maju, kiri, mundur, dan kanan.
-- **Rotasi**: Gunakan `I`, `K` untuk pitch atas dan bawah, `J`, `L` untuk roll kiri dan kanan, dan `Q`, `E` untuk yaw kiri dan kanan.
-- **Kontrol Kecepatan**: Gunakan `<` dan `>` untuk mengubah kecepatan gerakan, `-` dan `=`/`+` untuk menyesuaikan kecepatan waktu.
-- **Pemilihan Planet**: Gunakan `1-9` untuk memilih planet yang berbeda.
-- **Penyesuaian Skala**: Gunakan `[` dan `]` untuk mengubah skala planet, `R` untuk mengatur ulang ke skala realistis.
-- **Visualisasi Orbit**: Gunakan `O` untuk mengaktifkan/nonaktifkan jalur orbit.
-- **Menambahkan Bulan**: Gunakan `M` untuk menambahkan bulan ke planet yang dipilih.
+## Code
 
-### Daftar Planet
-
-1. **Merkurius**
-2. **Venus**
-3. **Bumi**
-4. **Mars**
-5. **Jupiter**
-6. **Saturnus**
-7. **Uranus**
-8. **Neptunus**
-
-### Fitur
-
-- **Gerakan Planet yang Realistis**: Planet dan bulan bergerak dalam orbit mereka berdasarkan data astronomi nyata.
-- **Kamera Interaktif**: Navigasi melalui tata surya dengan kamera yang meniru kontrol pesawat luar angkasa.
-- **Skala Dinamis**: Sesuaikan skala planet untuk visibilitas yang lebih baik atau proporsi yang realistis.
-- **Jalur Orbit**: Visualisasikan orbit planet dan bulan.
-
-### Nikmati Perjalanan Anda!
-
-Jelajahi keajaiban tata surya dengan Proyek Solaris. Navigasi melalui ruang angkasa, amati gerakan planet, dan nikmati keindahan kosmos. Selamat menjelajah!
+| File | Contents |
+| --- | --- |
+| `main.cpp` | Window, render loop and input |
+| `solarsystem.cpp` | The system: planets, their positions and time |
+| `planet.cpp`, `moon.cpp` | Bodies and how they are drawn |
+| `camera.cpp` | The free-flight camera |
+| `tga.cpp` | TGA texture loader |
